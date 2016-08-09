@@ -15,3 +15,5 @@ Removing old .npmrc (external)
 Activating .npmrc "shelter"
 nitsingh$ npm config set registry https://registry.npmjs.org/
 ```
+
+Bower configuration
