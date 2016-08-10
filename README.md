@@ -23,4 +23,5 @@ Bower configuration
 ```
 #!shell
 nitsingh$ tar -cf $(date +'%m-%d-%Y').tar ./node_modules
+nitsingh$ tar -xf 08-09-2016.tar
 ```
