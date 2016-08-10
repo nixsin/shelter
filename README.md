@@ -19,4 +19,8 @@ nitsingh$ npm config set registry https://registry.npmjs.org/
 Bower configuration
 
 # Archive modules #
+
+```
+#!shell
 nitsingh$ tar -cf $(date +'%m-%d-%Y').tar ./node_modules
+```
