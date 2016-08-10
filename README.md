@@ -28,7 +28,7 @@ nitsingh$ tar -xf 08-09-2016.tar
 
 # Useful commands #
 
-## List down all globally installed packages ##
+### List down all globally installed packages ###
 ```
 #!shell
 nitsingh$ npm list -g --depth=0
