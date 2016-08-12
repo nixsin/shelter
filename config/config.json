@@ -1,63 +1,29 @@
 {
+ 
+    "requestURI": "/shelter",
 
-    
     "express": {
-        "view cache": false,
-        "view engine": "js",
-        "views": "path:./.build/templates"
+        "views": "path:./public/templates",
+        "view engine": "jsx",
+        "view": "require:react-engine/lib/expressView",
+        "mountpath": "config:requestURI"
     },
     
-
-    
     "view engines": {
-        "js": {
-            "module": "makara",
+        "jsx": {
+            "module": "react-engine/lib/server",
             "renderer": {
-                "method": "js",
-                "arguments": [
-                    { "cache": true, "helpers": "config:dust.helpers" }
-                ]
+                "method": "create",
+                "arguments": [{
+                    "routesFilePath": "path:./public/routes/routes.jsx",
+                    "routes": "path:./public/routes/routes.jsx"
+                }]
             }
         }
     },
 
-    "dust": {
-        "helpers": [
-    
-            "dust-makara-helpers"
-    
-        ]
-    },
-    
-
-    
-    "i18n": {
-        "contentPath": "path:./locales",
-        "fallback": "en-US"
-    },
-    
-
-    "specialization": {
-    },
-
     "middleware": {
-
         
-        "makara": {
-            "priority": 100,
-            "enabled": true,
-            "module": {
-                "name": "makara",
-                "arguments": [
-                    {
-                        "i18n": "config:i18n",
-                        "specialization": "config:specialization"
-                    }
-                ]
-            }
-        },
-        
-
         "static": {
             "module": {
                 "arguments": [ "path:./.build" ]

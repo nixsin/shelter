@@ -1,4 +1,10 @@
 {
   "directory": "public/components",
-  "json": "bower.json"
+  "json": "bower.json",
+  "registry": {
+    "search": [
+      "http://localhost:8000",
+      "http://bower.herokuapp.com"
+    ]
+  }
 }
