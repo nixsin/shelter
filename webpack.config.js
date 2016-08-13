@@ -4,7 +4,7 @@ module.exports = {
     eslint: {
         configFile: '.eslintrc'
     },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     entry: [
         './public/js/app.js'
     ],
@@ -15,32 +15,13 @@ module.exports = {
     },
     module: {
         preLoaders: [
-            {
-                test: /\.js$/,
-                loader: 'eslint-loader',
-                exclude: [/node_modules/]
-            },
-            {
-                test: /\.jsx$/,
-                loaders: ['eslint-loader'],
-                exclude: [/node_modules/]
-            }
+            { test: /\.js$/, loader: 'eslint-loader', exclude: [/node_modules/] },
+            { test: /\.jsx$/, loaders: ['eslint-loader'], exclude: [/node_modules/] }
         ],
         loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel-loader'],
-                exclude: [/node_modules/]
-            },
-            {
-                test: /\.jsx$/,
-                loaders: ['babel-loader'],
-                exclude: [/node_modules/]
-            },
-            {
-                test: /\.json$/,
-                loaders: ['json-loader']
-            }
+            { test: /\.js$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
+            { test: /\.jsx$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
+            { test: /\.json$/, loaders: ['json-loader'] }
         ]
     },
     plugins: [],

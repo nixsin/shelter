@@ -9,7 +9,8 @@
     "lint": "eslint . --ext .jsx --ext .js",
     "start": "node server.js",
     "tar": "tar -cf $(date +'%m-%d-%Y').tar ./node_modules",
-    "build": "npm run clean && webpack",
+    "buildcss": "mkdir .build/css && lessc public/css/app.less .build/css/app.css",
+    "build": "npm run clean && webpack && npm run buildcss",
     "nuke": "npm run tar; rm -rf node_modules && npm install && npm run build",
     "nuke-all": "npm cache clean; npm run nuke"
   },
@@ -24,6 +25,7 @@
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.0.0",
     "json-loader": "^0.5.4",
+    "less": "^2.7.1",
     "supertest": "^2.0.0",
     "webpack": "^1.13.1"
   },
