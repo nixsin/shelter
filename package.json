@@ -5,9 +5,13 @@
   "author": "nitsingh@paypal.com",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
     "clean": "rm -rf .build",
-    "build": "npm run clean && webpack"
+    "start": "node server.js",
+    "tar": "tar -cf $(date +'%m-%d-%Y').tar ./node_modules",
+
+    "build": "npm run clean && webpack",
+    "nuke": "npm run tar; rm -rf node_modules && npm install && npm run build",
+    "nuke-all": "npm cache clean; npm run nuke"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
