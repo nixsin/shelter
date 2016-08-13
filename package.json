@@ -10,7 +10,7 @@
     "start": "node server.js",
     "tar": "tar -cf $(date +'%a_%d-%b_%H:%M:%S').tar ./node_modules",
 
-    "buildcss": "mkdir .build/css && lessc public/css/app.less .build/css/app.css",
+    "buildcss": "rm -rf .build/css && mkdir -p .build/css && lessc public/css/app.less .build/css/app.css",
     "checkpoint": "npm run tar; npm shrinkwrap --dev",
 
     "build": "npm run clean && webpack",
