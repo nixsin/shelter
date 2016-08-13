@@ -31,6 +31,7 @@ const Chrome = (props) => (
                     <p><a className="btn btn-primary btn-lg" href="http://www.paypal.com" role="button">Learn more</a></p>
                 </div>
             </div>
+            <script src="js/framework.js" />
             <script src="js/app.js" />
         </body>
     </html>

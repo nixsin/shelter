@@ -7,12 +7,15 @@ module.exports = {
         configFile: '.eslintrc'
     },
     devtool: 'source-map',
-    entry: [
-        './public/js/app.js'
-    ],
+    entry: {
+        app: './public/js/app.js',
+        'framework': [
+            'react-engine/lib/client'
+        ]
+    },
     output: {
         path: path.join(__dirname, '.build'),
-        filename: 'js/app.js',
+        filename: 'js/[name].js',
         publicPath: '/'
     },
     module: {
@@ -29,8 +32,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('css/app.css'),
+        new ExtractTextPlugin('css/[name].css'),
         new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'framework',
+            minChunks: 3
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
