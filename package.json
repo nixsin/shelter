@@ -49,7 +49,7 @@
     "webpack": "^1.13.1"
   },
   "pre-commit": [
-      "lint",
-      "build"
+    "lint",
+    "build"
   ]
 }
