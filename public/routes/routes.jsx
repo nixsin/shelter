@@ -1,12 +1,10 @@
-'use strict';
-
+/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 import Chrome from 'Chrome';
 import React from 'react';
-import { Router, Route, hashHistory} from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 
 module.exports = (
     <Router history={hashHistory}>
-        <Route path='/shelter/' component={Chrome}>
-        </Route>
+        <Route path="/shelter/" component={Chrome} />
     </Router>
 );

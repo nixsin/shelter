@@ -1,22 +1,30 @@
 {
   "name": "shelter",
   "version": "0.1.0",
-  "description": "Basic React/Babel/Webpack/Kraken application",
+  "description": "Boilerplate React/Babel/Webpack/Kraken app",
   "author": "nitsingh@paypal.com",
   "main": "server.js",
   "scripts": {
     "clean": "rm -rf .build",
+    "lint": "eslint . --ext .jsx --ext .js",
     "start": "node server.js",
     "tar": "tar -cf $(date +'%m-%d-%Y').tar ./node_modules",
-
     "build": "npm run clean && webpack",
     "nuke": "npm run tar; rm -rf node_modules && npm install && npm run build",
     "nuke-all": "npm cache clean; npm run nuke"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
+    "eslint": "^3.3.0",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.0.0",
     "json-loader": "^0.5.4",
+    "supertest": "^2.0.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {

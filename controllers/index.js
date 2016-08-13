@@ -1,11 +1,8 @@
-'use strict';
-
-var url = require('url');
+const url = require('url');
 
 module.exports = router => {
-
-    router.get('/', function(req, res) {
-    	res.render(url.parse(req.originalUrl).pathname, {});
+	// eslint-disable-next-line prefer-arrow-callback
+    router.get('/', function rootHandler(req, res) {
+        res.render(url.parse(req.originalUrl).pathname, {});
     });
-
 };

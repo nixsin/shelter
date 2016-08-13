@@ -1,47 +1,43 @@
-/*global describe:false, it:false, beforeEach:false, afterEach:false*/
+/* global describe:false, it:false, beforeEach:false, afterEach:false*/
 
-'use strict';
+const kraken = require('kraken-js');
+const express = require('express');
+const path = require('path');
 
-
-var kraken = require('kraken-js'),
-    express = require('express'),
-    path = require('path'),
-    request = require('supertest');
-
-
-describe('index', function () {
-
-    var app, mock;
+// eslint-disable-next-line import/no-extraneous-dependencies
+const request = require('supertest');
 
 
-    beforeEach(function (done) {
+describe('index', () => {
+    let app;
+    let mock;
+
+
+    beforeEach((done) => {
         app = express();
         app.on('start', done);
         app.use(kraken({
-            basedir: path.resolve(__dirname, '..')
+            basedir: path.resolve(__dirname, '..'),
         }));
 
         mock = app.listen(1337);
-
     });
 
 
-    afterEach(function (done) {
+    afterEach((done) => {
         mock.close(done);
     });
 
 
-    it('should say "hello"', function (done) {
+    it('should say "hello"', (done) => {
         request(mock)
             .get('/')
             .expect(200)
             .expect('Content-Type', /html/)
-            
-                .expect(/Hello, /)
-            
-            .end(function (err, res) {
+            .expect(/Hello, /)
+            // eslint-disable-next-line prefer-arrow-callback, no-unused-vars
+            .end(function endHandler(err, res) {
                 done(err);
             });
     });
-
 });

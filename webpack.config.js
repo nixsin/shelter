@@ -1,8 +1,9 @@
-'use strict';
-
-let path = require('path');
+const path = require('path');
 
 module.exports = {
+    eslint: {
+        configFile: '.eslintrc'
+    },
     devtool: 'inline-source-map',
     entry: [
         './public/js/app.js'
@@ -13,6 +14,18 @@ module.exports = {
         publicPath: '/'
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: 'eslint-loader',
+                exclude: [/node_modules/]
+            },
+            {
+                test: /\.jsx$/,
+                loaders: ['eslint-loader'],
+                exclude: [/node_modules/]
+            }
+        ],
         loaders: [
             {
                 test: /\.js$/,
@@ -30,9 +43,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        
-    ],
+    plugins: [],
     resolve: {
         extensions: ['', '.js', '.jsx', '.json', '.less'],
         root: __dirname,
