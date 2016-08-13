@@ -15,6 +15,7 @@
     "nuke-all": "npm cache clean; npm run nuke"
   },
   "devDependencies": {
+    "pre-commit": "^1.1.3",
     "supertest": "^2.0.0"
   },
   "dependencies": {
@@ -46,5 +47,10 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
-  }
+  },
+  "pre-commit": [
+      "lint",
+      "build",
+      "test"
+  ]
 }

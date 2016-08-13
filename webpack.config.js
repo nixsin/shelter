@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     eslint: {
@@ -24,7 +24,7 @@ module.exports = {
             { test: /\.js$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
             { test: /\.jsx$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
             { test: /\.json$/, loaders: ['json-loader'] },
-            { test: /\.less$/i, loader: ExtractTextPlugin.extract('css?sourceMap!' + 'less?sourceMap') },
+            { test: /\.less$/i, loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap') },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
     },
