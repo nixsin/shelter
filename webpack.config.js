@@ -21,7 +21,9 @@ module.exports = {
         loaders: [
             { test: /\.js$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
             { test: /\.jsx$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
-            { test: /\.json$/, loaders: ['json-loader'] }
+            { test: /\.json$/, loaders: ['json-loader'] },
+            { test: /\.less$/, loader: 'style!css!less' },
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
     },
     plugins: [],
