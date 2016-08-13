@@ -1,5 +1,8 @@
 const path = require('path');
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractLESS = new ExtractTextPlugin('css/app.css');
+
 module.exports = {
     eslint: {
         configFile: '.eslintrc'
@@ -22,11 +25,13 @@ module.exports = {
             { test: /\.js$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
             { test: /\.jsx$/, loaders: ['babel-loader'], exclude: [/node_modules/] },
             { test: /\.json$/, loaders: ['json-loader'] },
-            { test: /\.less$/, loader: 'style!css!less' },
+            { test: /\.less$/i, loader: extractLESS.extract(['css','less'])},
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
     },
-    plugins: [],
+    plugins: [
+        extractLESS
+    ],
     resolve: {
         extensions: ['', '.js', '.jsx', '.json', '.less'],
         root: __dirname,
