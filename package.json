@@ -1,9 +1,9 @@
 {
   "name": "shelter",
   "version": "0.1.0",
-  "description": "asdadasd",
+  "description": "Basic React/Babel/Webpack/Kraken application",
   "author": "nitsingh@paypal.com",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "clean": "rm -rf .build",
     "start": "node server.js",
