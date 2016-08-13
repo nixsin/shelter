@@ -9,7 +9,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         app: './public/js/app.js',
-        'framework': [
+        framework: [
             'react-engine/lib/client'
         ]
     },
@@ -41,7 +41,8 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
-            }
+            },
+            mangle: true
         })
     ],
     resolve: {
