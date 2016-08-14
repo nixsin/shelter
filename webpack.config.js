@@ -4,6 +4,7 @@ const babelConfig = require('./package.json').babel;
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
     eslint: {
@@ -35,6 +36,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new ProgressBarPlugin(),
         new ExtractTextPlugin('css/[name].css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
@@ -42,10 +44,11 @@ module.exports = {
             minChunks: 3
         }),
         new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            mangle: true
+            mangle: false,
+            compress: false,
+            output: {
+                beautify: true
+            }
         })
     ],
     resolve: {
