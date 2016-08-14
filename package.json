@@ -7,12 +7,12 @@
   "scripts": {
     "clean": "rm -rf .build",
     "lint": "eslint . --ext .jsx --ext .js",
-    "start": "node server.js",
-    "tar": "tar -cf $(date +'%a_%d-%b_%H:%M:%S').tar ./node_modules",
-    "checkpoint": "npm run tar; npm shrinkwrap --dev",
+    "pack": "time( mkdir .modules; tar cf ./.modules/node_modules.tar node_modules )",
+    "unpack": "time ( tar xf ./.modules/node_modules.tar && npm prune && npm install )",
+    "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "build": "npm run clean && webpack",
-    "nuke": "npm run tar; rm -rf node_modules && npm i && npm run build",
-    "nuke-all": "npm cache clean; npm run nuke"
+    "nuke": "time( rm -rf node_modules && npm i && npm run build )",
+    "nuke-all": "time( npm cache clean && npm run nuke )"
   },
   "babel": {
     "presets": [
@@ -24,7 +24,6 @@
         "resolver",
         {
           "resolveDirs": [
-            "public/components",
             "public"
           ]
         }
