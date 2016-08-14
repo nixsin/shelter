@@ -1,3 +1,6 @@
+'use strict'; // eslint-disable-line strict
+
+const babelConfig = require('./package.json').babel;
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -48,11 +51,23 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.json', '.less'],
         root: __dirname,
-        modulesDirectories: [
-            'node_modules',
-            './public/components',
-            './public/lib',
-            './public/templates'
-        ]
+        modulesDirectories: resolveModulesDirectories() // eslint-disable-line no-use-before-define
     }
 };
+
+function resolveModulesDirectories() {
+    const plugins = babelConfig.plugins;
+    let resolverConfig;
+    let modulesDirectories = ['node_modules'];
+    for (let i = 0; i < plugins.length; i++) {
+        if (plugins[i][0] === 'resolver') {
+            resolverConfig = plugins[i][1];
+            break;
+        }
+    }
+    if (resolverConfig && Array.isArray(resolverConfig.resolveDirs)) {
+        modulesDirectories = modulesDirectories.concat(resolverConfig.resolveDirs);
+    }
+
+    return modulesDirectories;
+}

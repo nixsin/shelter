@@ -11,8 +11,14 @@
     "tar": "tar -cf $(date +'%a_%d-%b_%H:%M:%S').tar ./node_modules",
     "checkpoint": "npm run tar; npm shrinkwrap --dev",
     "build": "npm run clean && webpack",
-    "nuke": "npm run tar; rm -rf node_modules && npm install && npm run build",
+    "nuke": "npm run tar; rm -rf node_modules && npm i && npm run build",
     "nuke-all": "npm cache clean; npm run nuke"
+  },
+  "babel": {
+      "presets":[ "react", "es2015" ],
+      "plugins": [
+          ["resolver", { "resolveDirs": ["public/components", "public"] }]
+      ]
   },
   "devDependencies": {
     "pre-commit": "^1.1.3",
@@ -23,6 +29,7 @@
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-module-alias": "^1.6.0",
+    "babel-plugin-resolver": "0.0.7",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "bootstrap": "^3.3.7",
