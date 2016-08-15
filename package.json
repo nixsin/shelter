@@ -1,24 +1,6 @@
 {
-  "name": "shelter",
-  "version": "0.1.0",
-  "description": "Boilerplate React/Babel/Webpack/Kraken app",
   "author": "nitsingh@paypal.com",
-  "main": "server.js",
-  "scripts": {
-    "clean": "rm -rf .build",
-    "lint": "eslint . --ext .jsx --ext .js",
-    "pack": "time( mkdir .modules; tar cf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar node_modules )",
-    "unpack": "time ( tar xf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar && npm prune && npm install );  npm outdated;",
-    "checkpoint": "npm run pack; npm shrinkwrap --dev",
-    "build": "npm run clean && webpack",
-    "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
-    "nuke-all": "time( npm cache clean && npm run nuke )"
-  },
   "babel": {
-    "presets": [
-      "react",
-      "es2015"
-    ],
     "plugins": [
       [
         "resolver",
@@ -28,11 +10,11 @@
           ]
         }
       ]
+    ],
+    "presets": [
+      "react",
+      "es2015"
     ]
-  },
-  "devDependencies": {
-    "pre-commit": "^1.1.3",
-    "supertest": "^2.0.0"
   },
   "dependencies": {
     "babel-core": "^6.13.2",
@@ -66,8 +48,26 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
   },
+  "description": "Boilerplate React/Babel/Webpack/Kraken app",
+  "devDependencies": {
+    "pre-commit": "^1.1.3",
+    "supertest": "^2.0.0"
+  },
+  "main": "server.js",
+  "name": "shelter",
   "pre-commit": [
     "lint",
     "build"
-  ]
+  ],
+  "scripts": {
+    "build": "npm run clean && webpack",
+    "checkpoint": "npm run pack; npm shrinkwrap --dev",
+    "clean": "rm -rf .build",
+    "lint": "eslint . --ext .jsx --ext .js",
+    "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
+    "nuke-all": "time( npm cache clean && npm run nuke )",
+    "pack": "time( mkdir .modules; tar cf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar node_modules )",
+    "unpack": "time ( tar xf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar && npm prune && npm install );  npm outdated;"
+  },
+  "version": "0.1.0"
 }
