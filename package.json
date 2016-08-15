@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "rm -rf .build",
     "lint": "eslint . --ext .jsx --ext .js",
-    "pack": "time( mkdir .modules; tar cf ./.modules/node_modules.tar node_modules )",
-    "unpack": "time ( tar xf ./.modules/node_modules.tar && npm prune && npm install );  npm outdated;",
+    "pack": "time( mkdir .modules; tar cf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar node_modules )",
+    "unpack": "time ( tar xf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar && npm prune && npm install );  npm outdated;",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "build": "npm run clean && webpack",
     "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
