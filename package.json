@@ -8,10 +8,10 @@
     "clean": "rm -rf .build",
     "lint": "eslint . --ext .jsx --ext .js",
     "pack": "time( mkdir .modules; tar cf ./.modules/node_modules.tar node_modules )",
-    "unpack": "time ( tar xf ./.modules/node_modules.tar && npm prune && npm install )",
+    "unpack": "time ( tar xf ./.modules/node_modules.tar && npm prune && npm install );  npm outdated;",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "build": "npm run clean && webpack",
-    "nuke": "time( rm -rf node_modules && npm i && npm run build )",
+    "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
     "nuke-all": "time( npm cache clean && npm run nuke )"
   },
   "babel": {
@@ -49,7 +49,7 @@
     "eslint-loader": "^1.5.0",
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
-    "eslint-plugin-react": "^6.0.0",
+    "eslint-plugin-react": "^6.1.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
