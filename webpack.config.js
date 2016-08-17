@@ -7,14 +7,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function getConfig(env) {
+    const isProd = env && env === 'production';
 
-    const isProd = env && env === 'production'? true: false;
-
-    var baseConfig = {
+    const baseConfig = {
         devtool: 'source-map',
         entry: {
             app: './public/js/app.js',
-            framework: isProd ? ['react-engine/lib/client'] : ['react-engine/lib/client', 'webpack/hot/dev-server', 'webpack-hot-middleware/client']
+            framework: isProd ? ['react-engine/lib/client'] : ['react-engine/lib/client', 'webpack/hot/dev-server', 'webpack-hot-middleware/client'] // eslint-disable-line max-len
         },
         eslint: {
             configFile: '.eslintrc'
@@ -25,10 +24,10 @@ function getConfig(env) {
                 { test: /\.jsx$/, loader: 'eslint-loader', exclude: [/node_modules/] }
             ],
             loaders: [
-                { test: /\.js$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] },
-                { test: /\.jsx$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] },
+                { test: /\.js$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] }, // eslint-disable-line max-len
+                { test: /\.jsx$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] }, // eslint-disable-line max-len
                 { test: /\.json$/, loader: 'json-loader' },
-                { test: /\.less$/i, loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap') },
+                { test: /\.less$/i, loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap') }, // eslint-disable-line max-len
                 { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
             ]
         },
@@ -48,7 +47,7 @@ function getConfig(env) {
         ],
         resolve: {
             extensions: ['', '.js', '.jsx', '.json', '.less'],
-            modulesDirectories: resolveModulesDirectories(), // eslint-disable-line no-use-before-define
+            modulesDirectories: resolveModulesDirectories(), // eslint-disable-line no-use-before-define, max-len
             root: __dirname
         }
     };
@@ -71,7 +70,7 @@ function getConfig(env) {
         ]);
     } else {
         baseConfig.devServer = {
-            contentBase : '.build',
+            contentBase: '.build',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
@@ -103,7 +102,4 @@ function resolveModulesDirectories() {
     return modulesDirectories;
 }
 
-var config = getConfig(process.env.NODE_ENV? process.env.NODE_ENV: 'development');
-console.log(JSON.stringify(config, null, 2));
-
-module.exports = config;
+module.exports = getConfig(process.env.NODE_ENV ? process.env.NODE_ENV : 'development');

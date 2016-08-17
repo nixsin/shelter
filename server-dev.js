@@ -1,14 +1,12 @@
-'use strict';
-
 require('babel-core/register');
 
 const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackDevMiddleware = require('webpack-dev-middleware'); // eslint-disable-line import/no-extraneous-dependencies, max-len
+const webpackHotMiddleware = require('webpack-hot-middleware'); // eslint-disable-line import/no-extraneous-dependencies, max-len
 const server = require('./index');
+const webpackConfig = require('./webpack.config');
 
-let webpackConfig = require('./webpack.config');
-let compiler = webpack(webpackConfig);
+const compiler = webpack(webpackConfig);
 
 server.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
