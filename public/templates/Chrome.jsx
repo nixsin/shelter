@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/html-has-lang, max-len, react/prop-types */
+/* eslint-disable jsx-a11y/html-has-lang, max-len, react/prop-types, import/no-extraneous-dependencies, import/no-unresolved */
 
 import React from 'react';
+import NavBar from 'components/NavBar';
 
 const Chrome = (props) => (
     <html>
@@ -23,13 +24,9 @@ const Chrome = (props) => (
             <title>PayPal</title>
         </head>
         <body>
-            <div className="outerWrapper" id="outerWrapper">
+            <NavBar />
+            <div className="container-fluid">
                 {props.children}
-                <div className="jumbotron">
-                    <h1>Hello, world!</h1>
-                    <p>...</p>
-                    <p><a className="btn btn-primary btn-lg" href="http://www.paypal.com" role="button">Learn more</a></p>
-                </div>
             </div>
             <script src="js/framework.js" />
             <script src="js/app.js" />

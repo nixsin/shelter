@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
-const express = require('express');
-const kraken = require('kraken-js');
+import express from 'express';
+import kraken from 'kraken-js';
 
 /*
  * Create and configure application. Also exports application instance for use by tests.

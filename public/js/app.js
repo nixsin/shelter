@@ -1,7 +1,8 @@
-import '../css/app.less';
+/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
+import 'css/app.less';
 
-const Routes = require('../routes/routes.jsx');
-const ReactEngineClient = require('react-engine/lib/client');
+import Routes from 'routes/routes.jsx';
+import ReactEngineClient from 'react-engine/lib/client';
 
 const options = {
     routes: Routes,
