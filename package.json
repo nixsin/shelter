@@ -50,8 +50,12 @@
   },
   "description": "Boilerplate React/Babel/Webpack/Kraken app",
   "devDependencies": {
+    "nodemon": "^1.10.0",
     "pre-commit": "^1.1.3",
-    "supertest": "^2.0.0"
+    "react-hot-loader": "^1.3.0",
+    "supertest": "^2.0.0",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2"
   },
   "main": "server.js",
   "name": "shelter",
@@ -60,9 +64,10 @@
     "build"
   ],
   "scripts": {
-    "build": "npm run clean && webpack",
+    "build": "npm run clean && mkdir .build && webpack --progress --profile --colors",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "clean": "rm -rf .build",
+    "dev": "nodemon server-dev",
     "lint": "eslint . --ext .jsx --ext .js",
     "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
     "nuke-all": "time( npm cache clean && npm run nuke )",

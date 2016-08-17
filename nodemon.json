@@ -1,8 +1,8 @@
 {
     "restartable": "rs",
     "ignore": [
+        "/public/*",
         "/.build/*",
-        "/.*",
         "*.md",
         "*.css"
     ],
