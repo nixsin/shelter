@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware'); // eslint-disable-line import/no-extraneous-dependencies, max-len
 const webpackHotMiddleware = require('webpack-hot-middleware'); // eslint-disable-line import/no-extraneous-dependencies, max-len
 const server = require('./index');
+const packageJson = require('./package.json');
 const webpackConfig = require('./webpack.config');
 
 const compiler = webpack(webpackConfig);
@@ -23,7 +24,7 @@ server.use(webpackDevMiddleware(compiler, {
 }));
 
 server.use(webpackHotMiddleware(compiler));
-server.listen(process.env.PORT || 8000, function krakenListener(err) {
+server.listen(process.env.PORT || packageJson.config.port, function krakenListener(err) {
     if (err) {
         console.error(err);
     }

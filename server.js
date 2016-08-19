@@ -1,14 +1,15 @@
 /* eslint-disable no-console */
 
 require('babel-core/register');
-const app = require('./index');
 const http = require('http');
+const app = require('./index');
+const packageJson = require('./package.json');
 
 /*
  * Create and start HTTP server.
  */
 const server = http.createServer(app);
-server.listen(process.env.PORT || 8000);
+server.listen(process.env.PORT || packageJson.config.port);
 server.on('listening', function krakenListener(err) {
     if (err) {
         console.error(err);

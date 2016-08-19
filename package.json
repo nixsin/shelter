@@ -16,6 +16,9 @@
       "es2015"
     ]
   },
+  "config": {
+    "port": 8000
+  },
   "dependencies": {
     "babel-core": "^6.13.2",
     "babel-eslint": "^6.1.2",
@@ -64,10 +67,10 @@
     "build"
   ],
   "scripts": {
-    "build": "npm run clean && mkdir .build && webpack --progress --profile --colors",
+    "build": "npm run clean && mkdir .build && webpack --profile --colors",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "clean": "rm -rf .build",
-    "dev": "npm run build; nodemon server-dev",
+    "dev": "npm run build && nodemon server-dev",
     "lint": "eslint . --ext .jsx --ext .js",
     "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
     "nuke-all": "time( npm cache clean && npm run nuke )",
