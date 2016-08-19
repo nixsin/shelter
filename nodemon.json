@@ -4,7 +4,8 @@
         "/public/*",
         "/.build/*",
         "*.md",
-        "*.css"
+        "*.css",
+        "npm-shrinkwrap.json"
     ],
     "verbose": true,
     "execMap": {

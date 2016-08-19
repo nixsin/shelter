@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+//let ClosureCompilerPlugin = require('webpack-closure-compiler');
 
 function getConfig(env) {
     const isProd = env && env === 'production';
@@ -27,7 +28,7 @@ function getConfig(env) {
                 { test: /\.js$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] }, // eslint-disable-line max-len
                 { test: /\.jsx$/, loaders: isProd ? ['babel-loader'] : ['react-hot', 'babel-loader'], exclude: [/node_modules/] }, // eslint-disable-line max-len
                 { test: /\.json$/, loader: 'json-loader' },
-                { test: /\.less$/i, loader: ExtractTextPlugin.extract('css?sourceMap!less?sourceMap') }, // eslint-disable-line max-len
+                { test: /\.less$/i, loader: isProd ? ExtractTextPlugin.extract('css?sourceMap!less?sourceMap') : 'style!css!less' }, // eslint-disable-line max-len
                 { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
             ]
         },
@@ -67,6 +68,14 @@ function getConfig(env) {
                     warnings: false
                 }
             })
+            /*new ClosureCompilerPlugin({
+                compiler: {
+                    language_in: 'ECMASCRIPT6',
+                    language_out: 'ECMASCRIPT5',
+                    compilation_level: 'SIMPLE'
+                },
+                concurrency: 3
+            })*/
         ]);
     } else {
         baseConfig.devServer = {
