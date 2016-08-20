@@ -1,11 +1,13 @@
 {
     "restartable": "rs",
     "ignore": [
-        "/public/*",
         "/.build/*",
-        "*.md",
-        "*.css",
-        "npm-shrinkwrap.json"
+        "/public/components/*",
+        "/public/css/*",
+        "/public/js/*",
+        "/public/*.ico",
+        "npm-shrinkwrap.json",
+        "*.md"
     ],
     "verbose": true,
     "execMap": {

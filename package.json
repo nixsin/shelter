@@ -67,14 +67,14 @@
     "build"
   ],
   "scripts": {
-    "build": "npm run clean && mkdir .build && webpack --profile --colors",
+    "build": "npm run clean && webpack --profile --colors",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
-    "clean": "rm -rf .build",
-    "dev": "npm run build && nodemon server-dev",
+    "clean": "rm -rf .build && mkdir .build",
     "lint": "eslint . --ext .jsx --ext .js",
     "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
     "nuke-all": "time( npm cache clean && npm run nuke )",
     "pack": "time( mkdir .modules; tar cf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar node_modules )",
+    "start:dev": "npm run build && nodemon server-dev",
     "unpack": "time ( tar xf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar && npm prune && npm install );  npm outdated;"
   },
   "version": "0.1.0"
