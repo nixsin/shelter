@@ -70,17 +70,17 @@
     "build"
   ],
   "scripts": {
+    "postinstall": "node script/environment.js",
     "clean": "rm -rf .build && mkdir .build",
     "build": "npm run clean && webpack --profile --colors",
+      "postbuild": "node script/environment.js",
     "lint": "eslint . --ext .jsx --ext .js",
-    "set:dev": "NODE_ENV=development",
-    "set:prod": "NODE_ENV=production",
     "start": "npm run build && node .",
-    "start:dev": "npm run set:dev && npm start",
-    "start:dev:hmr": "npm run set:dev && npm run build && nodemon server-dev",
-    "start:prod": "npm run set:prod && npm start",
+    "start:dev": "NODE_ENV=development && npm start",
+    "start:dev:hmr": "NODE_ENV=development && npm run build && nodemon server-dev",
+    "start:prod": "NODE_ENV=production && npm start",
     "nuke": "time( rm -rf node_modules && npm i && npm run build ); npm outdated;",
-    "nuke-all": "time( npm cache clean && npm run nuke )",
+    "nuke:all": "time( npm cache clean && npm run nuke )",
     "checkpoint": "npm run pack; npm shrinkwrap --dev",
     "pack": "time( mkdir .modules; tar cf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar node_modules )",
     "unpack": "time ( tar xf ./.modules/node_modules-$(git rev-parse --abbrev-ref HEAD).tar && npm prune && npm install );  npm outdated;"
