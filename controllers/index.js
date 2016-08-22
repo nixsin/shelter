@@ -1,18 +1,8 @@
-'use strict';
+const url = require('url');
 
-var IndexModel = require('../models/index');
-
-
-module.exports = function (router) {
-
-    var model = new IndexModel();
-
-    router.get('/', function (req, res) {
-        
-        
-        res.render('index', model);
-        
-        
+module.exports = router => {
+	// eslint-disable-next-line prefer-arrow-callback
+    router.get('/', function baseRouteHandler(req, res) {
+        res.render(url.parse(req.originalUrl).pathname, {});
     });
-
 };

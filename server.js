@@ -1,17 +1,18 @@
-'use strict';
+/* eslint-disable no-console */
 
-var app = require('./index');
-var http = require('http');
-
-
-var server;
+require('babel-core/register');
+const http = require('http');
+const app = require('./index');
+const packageJson = require('./package.json');
 
 /*
  * Create and start HTTP server.
  */
-
-server = http.createServer(app);
-server.listen(process.env.PORT || 8000);
-server.on('listening', function () {
+const server = http.createServer(app);
+server.listen(process.env.PORT || packageJson.config.port);
+server.on('listening', function krakenListener(err) {
+    if (err) {
+        console.error(err);
+    }
     console.log('Server listening on http://localhost:%d', this.address().port);
 });
