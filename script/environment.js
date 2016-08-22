@@ -1,8 +1,9 @@
-var colors = require('colors');
+const colors = require('colors');
 
-var NODE_ENV = process.env.NODE_ENV;
-if (NODE_ENV === 'production'){
-    console.log(colors.bgRed.bold('NODE environment: ' + NODE_ENV));
+const NODE_ENV = process.env.NODE_ENV;
+const nodeEnvWarning = `NODE environment: ${NODE_ENV}`;
+if (NODE_ENV === 'production') {
+    console.log(colors.bgRed.bold(nodeEnvWarning));
 } else {
-    console.log(colors.bgCyan.bold('NODE environment: ' + NODE_ENV));
+    console.log(colors.bgCyan.bold(nodeEnvWarning));
 }
